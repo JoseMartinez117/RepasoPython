@@ -1,0 +1,74 @@
+
+def punto1():
+    numero =1 
+    iteracion=1 
+    resultado=0  
+    error=0
+    
+    print("\n{:<25} {:<25} {:<25}".format("Iteracion", "Valor", "Error"))
+    while(iteracion != 7):
+        resultado+=1/(2**iteracion)
+        
+        if iteracion==3 or iteracion==4 or iteracion==5 or iteracion==6:
+            error=abs(numero-resultado)
+            #print("El error relativo cuando hay "+str(iteracion)+" terminos es de: "+str(error)+"\n") 
+                    
+        iteracion+=1
+        print("{:<25} {:<25} {:<25}".format(iteracion, resultado, error))
+            
+
+def punto2():
+    numero =5 
+    iteracion=1 
+    resultado=0  
+    error=0
+    
+    print("\n{:<25} {:<25} {:<25}".format("Iteracion", "Valor", "Error"))
+    while(iteracion != 26):
+        resultado+=(5/(iteracion*(iteracion+1)))
+        
+        if iteracion==3 or iteracion==10 or iteracion==20 or iteracion==25:
+            error=abs(numero-resultado)
+            #print("El error relativo cuando hay "+str(iteracion)+" terminos es de: "+str(error)+"\n")         
+        iteracion+=1  
+        print("{:<25} {:<25} {:<25}".format(iteracion, resultado, error))  
+    
+
+def punto3():
+    valorAct=0
+    valorAnt=0
+    iteracion=1
+    x=1
+    resultado=1
+    errorPor=0
+    
+    print("\n{:<25} {:<25} {:<25}".format("Iteracion", "Valor", "Error%"))
+    
+    while(True):
+        
+        valorAnt=valorAct
+        resultado=(1/5)*((2*x)+(8/x))
+        valorAct=resultado
+
+        errorPor=abs(((valorAct-valorAnt)/valorAct)*100)
+        
+        print("\n{:<25} {:<25} {:<25}".format(iteracion, valorAct, errorPor))
+        x=resultado
+        iteracion+=1
+        
+        if errorPor<0.05:
+            break
+        
+
+   
+    
+#Codigo main#
+print("\n //////////PUNTO#1//////////")
+punto1()
+
+print("\n //////////PUNTO#2//////////")
+punto2()
+
+print("\n //////////PUNTO#3//////////")
+punto3()
+    
