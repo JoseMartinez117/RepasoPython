@@ -1,0 +1,40 @@
+from sympy import *
+import math as math
+
+
+
+def obtenerDeri(expresion, constante, prima):
+    global textoderi
+    derivada = diff(expresion, x, prima)
+    textoderi=str(derivada)
+    derivada=derivada.subs(x,constante)
+    
+    return derivada
+    
+    
+    
+def serie(expresion, constante, valorx):
+    z=0
+    taylor=0
+    while (z<=6):
+        derivada=obtenerDeri(expresion, constante, z)    
+        taylor+=(derivada*((valorx-constante)**z))/math.factorial(z)
+        
+        print("{:<25} {:<25} {:<25} {:<25}".format(z, textoderi, derivada, taylor)) 
+        z+=1
+    print("\nEl resultado obtenido de la serie es de: "+str(taylor))    
+    
+
+
+#CODIGO MAIN
+global x
+x= Symbol('x')
+expresion=cos(x)
+constante= math.pi/4
+valorx=math.pi/3
+
+
+print("{:<25} {:<25} {:<25} {:<25}".format("Iteracion", "Expresion", "derivada", "Resultado"))
+print("")   
+serie(expresion, constante, valorx)
+
