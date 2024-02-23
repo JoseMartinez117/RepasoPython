@@ -1,0 +1,52 @@
+def calcularXe(xn, xp):
+    xe=xn+((xp-xn)/2)
+    return xe
+
+def cacularErrorPorc(valorActu, valorAnt):
+    error=abs((valorActu-valorAnt)/valorActu)*100
+    return error
+
+def biseccion(stop, xn, xp, iteracion, xeAnt):
+    xe=calcularXe(xn, xp)
+    error=0
+    funcxe=0
+    
+    if stop<0.05:
+        print("\nfin")
+    else:
+        
+        funcxe=(xe)**4-(2*(xe)**2)+(3*(xe))-5
+        error=cacularErrorPorc(xe, xeAnt)
+        xeAnt=xe
+        
+        
+        print("{:<25} {:<25} {:<25} {:<25} {:<25}".format(iteracion,xn, xp, funcxe, error)) 
+        if funcxe<0:
+            xn=xe
+            iteracion+=1
+            biseccion(error, xn, xp, iteracion, xeAnt)
+        elif funcxe>0:
+            xp=xe
+            iteracion+=1
+            biseccion(error, xn, xp, iteracion, xeAnt)
+        
+            
+    
+
+#CODIGO MAIN#
+
+print("{:<25} {:<25} {:<25} {:<25} {:<25}".format("iteracion","Valor Xn", "Valor Xp", "Valores de F(xe)", "Error %"))
+print("") 
+biseccion(1, 0, 2, 0, 0)
+    
+    
+    
+    
+
+
+
+
+
+
+
+
